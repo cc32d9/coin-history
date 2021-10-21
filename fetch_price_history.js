@@ -43,7 +43,7 @@ for (const coin_name in coins) {
 }
 
 
-// Cpingecko limits to 50 requests per minute -> 12 requests per 10 seconds.
+// Cpingecko limits to 50 requests per minute -> 10 requests per 12 seconds.
 
 async function fetch_coin_history(coin_name, symbol_name, current_date)
 {
@@ -55,10 +55,10 @@ async function fetch_coin_history(coin_name, symbol_name, current_date)
         return;
     }
             
-    if( fetch_counter >= 12 ) {
+    if( fetch_counter >= 10 ) {
         let passed = now - next_fetch_allowed;
         console.log('Reached maximum. Passed: ' + passed);
-        next_fetch_allowed = datetime.addMilliseconds(now, 10000 - passed);
+        next_fetch_allowed = datetime.addMilliseconds(now, 12000 - passed);
         fetch_counter = 0;
     }
 
