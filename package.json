@@ -1,0 +1,18 @@
+{
+    "name": "coin-history",
+    "version": "0.0.1",
+    "description": "Coin history database writer",
+    "license": "MIT",
+    "author": {
+        "name": "cc32d9"
+    },
+    "engines": {
+        "node": ">= 12.0.0"
+    },
+    "dependencies": {
+        "config": ">=3.3.3",
+        "mariadb": "",
+        "node-fetch": "^2.6.1",
+        "date-and-time": "^2.0.1"
+    }
+}
