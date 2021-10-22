@@ -57,6 +57,9 @@ async function fetch_coin_history(coin_name, symbol_name, current_date)
             
     if( fetch_counter >= 10 ) {
         let passed = now - next_fetch_allowed;
+        if( passed > 12000 ) {
+            passed = 12000;
+        }
         console.log('Reached maximum. Passed: ' + passed);
         next_fetch_allowed = datetime.addMilliseconds(now, 12000 - passed);
         fetch_counter = 0;
