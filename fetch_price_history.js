@@ -77,7 +77,6 @@ async function fetch_coin_history(coin_name, symbol_name, current_date)
             let resp_data = await response.json();
             if( resp_data["market_data"] != null && resp_data["market_data"]["current_price"] != null ) {
                 let price = resp_data["market_data"]["current_price"]["usd"];
-                console.log('Price: ' + symbol_name + ' ' + price);
 
                 pool.getConnection()
                     .then(conn => {
@@ -93,6 +92,8 @@ async function fetch_coin_history(coin_name, symbol_name, current_date)
                     .catch(err => {
                         console.log(err);
                     });
+                
+                console.log('Price: ' + symbol_name + ' ' + price);
             }
 
             fetch_coin_history(coin_name, symbol_name, datetime.addDays(current_date, 1));
