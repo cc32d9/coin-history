@@ -49,7 +49,7 @@ async function fetch_coin_history(coin_name, symbol_name, current_date)
 {
     let now = new Date();
     if( now - current_date < 24*3600*1000 ) { // we need yesterday's price
-        let delay = now + 3*3600*1000;
+        let delay = 3*3600*1000;
         console.log('Delay: ' + delay);
         setTimeout(fetch_coin_history, delay, coin_name, symbol_name, current_date);
         return;
@@ -63,7 +63,7 @@ async function fetch_coin_history(coin_name, symbol_name, current_date)
     }
 
     if( now < next_fetch_allowed ) {
-        let delay = next_fetch_allowed - now + (fetch_counter * 50);
+        let delay = next_fetch_allowed - now + Math.floor(Math.random() * 2000);
         console.log('Delay: ' + delay);
         setTimeout(fetch_coin_history, delay, coin_name, symbol_name, current_date);
     }
